@@ -1,6 +1,5 @@
 asgiref==3.3.1
 asn1crypto==1.4.0
-Brotli==1.0.9
 btrfsutil==5.10.1
 CacheControl==0.12.6
 ceph==1.0.0
