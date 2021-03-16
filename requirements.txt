@@ -81,3 +81,4 @@ udiskie==2.3.2
 urllib3==1.26.3
 webencodings==0.5.1
 Werkzeug==1.0.1
+whitenoise==5.2.0
