@@ -27,7 +27,7 @@ SECRET_KEY = 'g6d-c39796oa)=y*s26f)-qf^pzt@%%q=y5%tqd47!%m^50qo_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://daabackend.herokuapp.com/"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
