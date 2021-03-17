@@ -25,22 +25,28 @@ def handle_coordinates(request):
         return JsonResponse(coordinate_serializer.data, safe=False)
     elif request.method == 'POST':
         # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
+        tutorial_data = JSONParser().parse(request)
+        print(tutorial_data["input"])
         p = Popen(['./a.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
-        value = str("2 \n 1 2 3 4 \n 4 5 6 7") + '\n'
+
+        value = str(tutorial_data["input"]) + '\n'
         value = bytes(value, 'UTF-8')  # Needed in Python 3.
         p.stdin.write(value)
         p.stdin.flush()
         result = p.stdout.readline().strip()
+        print(result)
+        a_dict = {'output': result}
 
         csvfile = open('rectangles.csv', 'r')
         jsonfile = open('res.json', 'w')
 
-        fieldnames = ("x1","x2","y1","y2")
+        fieldnames = ("x1","x2","y1","y2","d")
         reader = csv.DictReader( csvfile)
-        out = json.dumps( [ row for row in reader ] )
+        
+        out = json.dumps(  [ row for row in reader ])
+    
         # jsonfile.write(out)
-        print(out)
         return JsonResponse(out, safe=False)
 
 

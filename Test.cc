@@ -652,14 +652,14 @@ void csv_writer()
     std::ofstream myFile("rectangles.csv");
     
     // Send data to the stream
-    myFile << "x1"<<","<<"x2"<<","<<"y1"<<","<<"y2 \n";
+    myFile << "x1"<<","<<"x2"<<","<<"y1"<<","<<"y2"<<","<<"d"<<"\n";
     rectangle frame = findFrame();
-    myFile<< frame.x_int.bottom<<", "<<frame.x_int.top<<", "<<frame.y_int.bottom<<", "<<frame.y_int.top<<"\n";
+    myFile<< frame.x_int.bottom<<","<<frame.x_int.top<<","<<frame.y_int.bottom<<","<<frame.y_int.top<<"\n";
     auto iter = iso_rectangles_input.begin();
     while(iter != iso_rectangles_input.end())
     {
         rectangle r = (*iter);
-        myFile<< r.x_int.bottom<<", "<<r.x_int.top<<", "<<r.y_int.bottom<<", "<<r.y_int.top<<"\n";
+        myFile<< r.x_int.bottom<<","<<r.x_int.top<<","<<r.y_int.bottom<<","<<r.y_int.top<<","<<0<<"\n";
         iter++;
     }
     // myFile << "2\n";
