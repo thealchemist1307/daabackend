@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'coordinates',
         'whitenoise.runserver_nostatic',
+            'corsheaders',
+
 
 ]
 
@@ -53,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
       'whitenoise.middleware.WhiteNoiseMiddleware',
+          'corsheaders.middleware.CorsMiddleware',  
+    'django.middleware.common.CommonMiddleware',  
 
 ]
 
@@ -136,3 +140,5 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+CORS_ALLOW_CREDENTIALS = True

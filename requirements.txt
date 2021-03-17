@@ -10,7 +10,7 @@ dataclasses==0.6
 decorator==4.4.2
 defusedxml==0.6.0
 Django==3.1.7
-django-cors-headers==3.3.0
+django-cors-headers==3.7.0
 djangorestframework==3.12.2
 dnspython==1.16.0
 entrypoints==0.3
