@@ -29,23 +29,26 @@ def handle_coordinates(request):
         print(tutorial_data["input"])
         p = Popen(['./a.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
-
         value = str(tutorial_data["input"]) + '\n'
         value = bytes(value, 'UTF-8')  # Needed in Python 3.
         p.stdin.write(value)
         p.stdin.flush()
         result = p.stdout.readline().strip()
-        print(result)
-        a_dict = {'output': result}
+        output=str(result)
+
 
         csvfile = open('rectangles.csv', 'r')
         jsonfile = open('res.json', 'w')
-
+        
         fieldnames = ("x1","x2","y1","y2","d")
         reader = csv.DictReader( csvfile)
-        
-        out = json.dumps(  [ row for row in reader ])
-    
+        array=[]
+        result = {}
+        for row in reader:
+            array.append(row)
+        dict={"coords":array,'output': output}
+        out = json.dumps(  dict )
+
         # jsonfile.write(out)
         return JsonResponse(out, safe=False)
 

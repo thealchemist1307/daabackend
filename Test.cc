@@ -708,7 +708,7 @@ int main()
     // }
 
     int measure_val = measure(S);
-    cout<<"The measure value is "<<measure_val;
+    cout<<measure_val;
     
 
 }
