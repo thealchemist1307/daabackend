@@ -24,7 +24,7 @@ def handle_coordinates(request):
         coordinate_serializer = CoordinateSerializer(coordinate, many=True)
         return JsonResponse(coordinate_serializer.data, safe=False)
     elif request.method == 'POST':
-        subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
+        # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
         p = Popen(['./a.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
         value = str("2 \n 1 2 3 4 \n 4 5 6 7") + '\n'
