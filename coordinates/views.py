@@ -12,7 +12,7 @@ from rest_framework.decorators import api_view
 import subprocess
 from subprocess import Popen, PIPE
 import pandas as pd
-import csv
+import csv , json
 from django.http import HttpResponse
 
 
@@ -33,11 +33,15 @@ def handle_coordinates(request):
         p.stdin.flush()
         result = p.stdout.readline().strip()
 
-        with open('rectangles.csv') as csv_file:
-            response = HttpResponse(csv_file, content_type='text/csv',status=status.HTTP_201_CREATED)
-            filename = "rectangles.csv"
-            response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
+        csvfile = open('rectangles.csv', 'r')
+        jsonfile = open('res.json', 'w')
 
-        return response
+        fieldnames = ("x1","x2","y1","y2")
+        reader = csv.DictReader( csvfile)
+        out = json.dumps( [ row for row in reader ] )
+        # jsonfile.write(out)
+        print(out)
+        return JsonResponse(out, safe=False)
+
 
  
