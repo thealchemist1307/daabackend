@@ -37,16 +37,30 @@ def handle_coordinates(request):
         output=str(result)
 
 
-        csvfile = open('rectangles.csv', 'r')
-        jsonfile = open('res.json', 'w')
-        
-        fieldnames = ("x1","x2","y1","y2","d")
+        csvfile = open('rectangles.csv', 'r')        
         reader = csv.DictReader( csvfile)
         array=[]
         result = {}
         for row in reader:
             array.append(row)
-        dict={"coords":array,'output': output}
+
+        p = Popen(['./contour.out'], shell=True, stdout=PIPE, stdin=PIPE)
+
+        value = str(tutorial_data["input"]) + '\n'
+        value = bytes(value, 'UTF-8')  # Needed in Python 3.
+        p.stdin.write(value)
+        p.stdin.flush()
+        result = p.stdout.readline().strip()
+
+        contourcsv = open('contours.csv', 'r')
+        
+        contour = csv.DictReader( contourcsv)
+        carray=[]
+        for row in contour:
+            carray.append(row)
+
+
+        dict={"coords":array,'output': output,"contour":carray}
         out = json.dumps(  dict )
 
         # jsonfile.write(out)
