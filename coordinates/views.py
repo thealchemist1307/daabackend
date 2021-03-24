@@ -25,8 +25,8 @@ def handle_coordinates(request):
         return JsonResponse(coordinate_serializer.data, safe=False)
     elif request.method == 'POST':
         # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
-       os.remove("rectangles.csv")
-       os.remove("contours.csv")
+        os.remove("rectangles.csv")
+        os.remove("contours.csv")
         tutorial_data = JSONParser().parse(request)
         print(tutorial_data["input"])
         p = Popen(['./a.out'], shell=True, stdout=PIPE, stdin=PIPE)
