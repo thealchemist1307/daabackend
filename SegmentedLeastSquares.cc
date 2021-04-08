@@ -250,7 +250,7 @@ void csv_writer(vector<point> pointSet, vector<pair<int,int>> segments)
     myFile.close();
 
     std::ofstream myFile2("segments.csv");
-    myFile << "x1"<<","<<"x2"<<","<<"y1"<<","<<"y2"<<","<<"d"<<"\n";
+    myFile2 << "x1"<<","<<"x2"<<","<<"y1"<<","<<"y2"<<","<<"d"<<"\n";
     // while(itc != hrc.end())
     // {
     //     line_segment ls = (*itc);
