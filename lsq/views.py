@@ -25,15 +25,15 @@ def handle_coordinates(request):
         # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
         tutorial_data = JSONParser().parse(request)
         print(tutorial_data["input"])
-        # p = Popen(['./a.out'], shell=True, stdout=PIPE, stdin=PIPE)
+        p = Popen(['./sls.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
-        # value = str(tutorial_data["input"]) + '\n'
-        # value = bytes(value, 'UTF-8')  # Needed in Python 3.
-        # p.stdin.write(value)
-        # p.stdin.flush()
-        # result = p.stdout.readline().strip()
-        # output=str(result)
-        output="output"
+        value = str(tutorial_data["input"]) + '\n'
+        value = bytes(value, 'UTF-8')  # Needed in Python 3.
+        p.stdin.write(value)
+        p.stdin.flush()
+        result = p.stdout.readline().strip()
+        output=str(result)
+
 
         csvfile = open('points.csv', 'r')        
         reader = csv.DictReader( csvfile)
