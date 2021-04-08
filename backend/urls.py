@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 urlpatterns = [ 
     url(r'^admin/', admin.site.urls),
     url(r'^', include('coordinates.urls')),
+    url(r'^', include('lsq.urls')),
 
 ]
 if settings.DEBUG:

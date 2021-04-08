@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coordinates',
+    'lsq',
         'whitenoise.runserver_nostatic',
             'corsheaders',
 
