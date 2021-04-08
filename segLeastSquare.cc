@@ -1,7 +1,11 @@
 ///@file
 ///@brief This file contains a complete working implementation of the segmented least squares algorithm
 #include<bits/stdc++.h>
+#include<ctime>
+#include<chrono>
+#include<ratio>
 using namespace std;
+using namespace std::chrono;
 #define UNDEF DBL_MAX
 ///Brief description of point class
 ///
@@ -237,11 +241,10 @@ void findSegments(int j, vector<vector<double>> e,double c, vector<double> opt)
     \param segments a vector<vector<double>> containing the computed sum of squares error
     \return a vector of datatype double, representing the OPT array
 */
-void csv_writer(vector<point> pointSet, vector<pair<int,int>> segments)
+void csv_writer(vector<point> pointSet, vector<pair<int,int>> segments, double min_error)
 {
     std::ofstream myFile("points.csv");
-    
-    myFile <<"x"<<","<<"y"<<"\n";
+        myFile << "x"<<","<<"y"<<"\n";
     for(auto it : pointSet)
     {
         myFile<<it.x<<", "<<it.y<<"\n";
@@ -250,7 +253,8 @@ void csv_writer(vector<point> pointSet, vector<pair<int,int>> segments)
     myFile.close();
 
     std::ofstream myFile2("segments.csv");
-    myFile2<< "x1"<<","<<"y1"<<","<<"x2"<<","<<"y2"<<","<<"d"<<"\n";
+        myFile2 << "x1"<<","<<"y1"<<","<<"x2"<<","<<"y2"<<","<<"d"<<"\n";
+
     // while(itc != hrc.end())
     // {
     //     line_segment ls = (*itc);
@@ -300,10 +304,15 @@ void csv_writer(vector<point> pointSet, vector<pair<int,int>> segments)
     }
 
     myFile2.close();
+
+    std::ofstream myFile3("error.txt");
+    myFile3<<min_error;
+    myFile3.close();
 }
 
 int main()
 {
+    // freopen("input.txt", "r", stdin);
     int n;
     cin>>n;
     vector<point> pointSet;
@@ -320,7 +329,7 @@ int main()
     }
     double c;
     cin>>c;
-    
+    auto t1 = high_resolution_clock::now();
     sort(pointSet.begin(),pointSet.end(),compare_points);
     
     
@@ -344,12 +353,11 @@ int main()
         }
     }
     OPT = segmentedLeastSquares(pointSet.size(),e,c);
-    cout<<"Segmented least square error is : "<<OPT[pointSet.size()];
+    // cout<<"Segmented least square error is : "<<OPT[pointSet.size()];
     findSegments(pointSet.size(),e,c,OPT);
-    // cout<<OPT[pointSet.size()];
-    // for(auto i : least_square_segments)
-    // {
-        
-    // }
-    csv_writer(pointSet,least_square_segments);
+    
+    auto t2 = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(t2-t1);
+    cout<<"The time taken is "<<duration.count()<<"ms"<<endl;
+    csv_writer(pointSet,least_square_segments,OPT[pointSet.size()]);
 }

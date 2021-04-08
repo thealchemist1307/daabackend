@@ -25,6 +25,9 @@ def handle_coordinates(request):
         # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
         tutorial_data = JSONParser().parse(request)
         print(tutorial_data["input"])
+        split=(tutorial_data["input"].splitlines()[0])
+        c=split=(tutorial_data["input"].splitlines()[int(split)+1])
+        print(c)
         p = Popen(['./sls.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
         value = str(tutorial_data["input"]) + '\n'
@@ -57,8 +60,10 @@ def handle_coordinates(request):
         for row in contour:
             carray.append(row)
 
-
-        dict={"coords":array,'output': output,"contour":carray}
+        f = open("error.txt", "r")
+        error_value=f.readline()
+        print(error_value)
+        dict={"coords":array,'output': output,"contour":carray,"cvalue":c,"error":error_value}
         out = json.dumps(  dict )
 
         # jsonfile.write(out)
