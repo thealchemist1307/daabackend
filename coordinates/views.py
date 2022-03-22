@@ -14,8 +14,10 @@ from subprocess import Popen, PIPE
 import pandas as pd
 import csv , json
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 import os
 
+@csrf_exempt 
 @api_view(['GET','POST'])
 def handle_coordinates(request):
     if request.method == 'GET':
@@ -26,8 +28,8 @@ def handle_coordinates(request):
     elif request.method == 'POST':
         # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
         tutorial_data = JSONParser().parse(request)
-        print(tutorial_data["input"])
-        p = Popen(['./a.out'], shell=True, stdout=PIPE, stdin=PIPE)
+        #print(tutorial_data["input"])
+        p = Popen(['a.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
         value = str(tutorial_data["input"]) + '\n'
         value = bytes(value, 'UTF-8')  # Needed in Python 3.
