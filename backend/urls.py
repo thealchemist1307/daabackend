@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('coordinates.urls')),
     url(r'^', include('lsq.urls')),
+    url(r'^', include('sweep.urls')),
 
 ]
 if settings.DEBUG:
