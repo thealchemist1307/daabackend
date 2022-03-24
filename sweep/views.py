@@ -66,15 +66,16 @@ def handle_coordinates_sweep(request):
         # p.stdin.write(value)
         # p.stdin.flush()
         # result = p.stdout.readline().strip()
-
-        intersectcsv = open('Points.csv', "x"| "r")
-        
-        intersect = csv.DictReader(intersectcsv)
         iarray=[]
-        for row in intersect:
-            iarray.append(row)
+        if(os.path.exists('./Points.csv')):
+            intersectcsv = open('Points.csv', 'r')
+            
+            intersect = csv.DictReader(intersectcsv)
+            iarray=[]
+            for row in intersect:
+                iarray.append(row)
 
-        
+            
         dict={"coords":array, "output":iarray}
         out = json.dumps(  dict )
 
