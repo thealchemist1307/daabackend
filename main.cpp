@@ -2,19 +2,6 @@
 #include <fstream>
 using namespace std;
 
-void csv_writer()
-{
-    std::ofstream myFile("rectangles.csv");
-    
-    // Send data to the stream
-    myFile << "x1"<<","<<"x2"<<","<<"y1"<<","<<"y2"<<","<<"d"<<"\n";
-    
-    // myFile << "2\n";
-    // myFile << "3\n";
-    
-    // Close the file
-    myFile.close();
-}
 int main(){
     vector<Line> segments;
     cout<<"Enter the number of lines you want to add"<<endl;
