@@ -26,15 +26,24 @@ def handle_coordinates_sweep(request):
     elif request.method == 'POST':
         # subprocess.call(["g++", "Test.cc"]) # OR gcc for c program
         tutorial_data = JSONParser().parse(request)
-        value = tutorial_data["input"]
-        value = str(value)
-        #print("Done")
-        print(tutorial_data["input"])
-        data, temp = os.pipe()
-        os.write(temp, bytes(value, "utf-8"))
-        os.close(temp) 
-        p = check_output("sweep.out", shell=True, stdin=data)
+        # value = tutorial_data["input"]
+        # value = str(value)
+        # #print("Done")
+        # print(tutorial_data["input"])
+        # data, temp = os.pipe()
+        # os.write(temp, bytes(value, "utf-8"))
+        # os.close(temp) 
+        # p = check_output(["g++ main.cpp -o sweep.out","./sweep.out"], shell=True, stdin=data)
         
+
+        p = Popen(['sweep.out'], shell=True, stdout=PIPE, stdin=PIPE)
+
+        value = str(tutorial_data["input"]) + '\n'
+        value = bytes(value, 'UTF-8')  # Needed in Python 3.
+        p.stdin.write(value)
+        p.stdin.flush()
+        result = p.stdout.readline().strip()
+        output=str(result)
         #value = str(tutorial_data["input"]) + '\n'
         #value = bytes(value, 'UTF-8')  # Needed in Python 3.
         #p.stdin.write(value)
