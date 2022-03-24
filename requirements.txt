@@ -14,7 +14,6 @@ django-cors-headers==3.7.0
 djangorestframework==3.12.2
 dnspython==1.16.0
 entrypoints==0.3
-grpcio==1.29.0
 gunicorn==20.0.4
 httplib2==0.18.1
 idna==2.9
@@ -57,7 +56,6 @@ pyparsing==2.4.7
 pyrsistent==0.16.0
 python-dateutil==2.8.1
 pytz==2020.1
-pyzmq==19.0.1
 qtconsole==4.7.4
 QtPy==1.9.0
 requests==2.23.0

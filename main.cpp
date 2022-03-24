@@ -46,8 +46,7 @@ int main(){
         //cout<<"Printing"<<endl;
     }
     myFile.close();
-    std::ofstream myFile1;
-    myFile1.open("Points.csv", ios::out | ios::app);
+    std::ofstream myFile1("Points.csv");
     myFile1<<"x"<<","<<"y"<<"\n";
     //cout<<segments.size()<<endl;
     for(auto it = findIntersection.in_points.begin(); it!=findIntersection.in_points.end(); it++){

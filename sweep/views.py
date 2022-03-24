@@ -33,7 +33,7 @@ def handle_coordinates_sweep(request):
         data, temp = os.pipe()
         os.write(temp, bytes(value, "utf-8"))
         os.close(temp) 
-        p = Popen(['sweep.out'], shell=True, stdout=PIPE, stdin=PIPE)
+        p = check_output("sweep.out", shell=True, stdin=data)
         
         #value = str(tutorial_data["input"]) + '\n'
         #value = bytes(value, 'UTF-8')  # Needed in Python 3.
@@ -41,6 +41,7 @@ def handle_coordinates_sweep(request):
         #p.stdin.flush()
         #result = p.stdout.readline().strip()
         #output=str(result)
+
 
         csvfile = open('Lines.csv', 'r')        
         reader = csv.DictReader(csvfile)
@@ -56,8 +57,7 @@ def handle_coordinates_sweep(request):
         # p.stdin.write(value)
         # p.stdin.flush()
         # result = p.stdout.readline().strip()
-        if(os.path.exists('Points.csv') and os.path.isfile('Points.csv')):
-         os.remove('Points.csv')
+
         intersectcsv = open('Points.csv', 'r')
         
         intersect = csv.DictReader(intersectcsv)
