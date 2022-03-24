@@ -36,7 +36,7 @@ def handle_coordinates_sweep(request):
         # p = check_output(["g++ main.cpp -o sweep.out","./sweep.out"], shell=True, stdin=data)
         
         print(os.getcwd())
-        p = Popen(['sweep.out'], shell=True, stdout=PIPE, stdin=PIPE)
+        p = Popen(['./sweep.out'], shell=True, stdout=PIPE, stdin=PIPE)
 
         value = str(tutorial_data["input"]) + '\n'
         value = bytes(value, 'UTF-8')  # Needed in Python 3.
