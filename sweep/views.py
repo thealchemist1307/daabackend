@@ -67,7 +67,7 @@ def handle_coordinates_sweep(request):
         # p.stdin.flush()
         # result = p.stdout.readline().strip()
 
-        intersectcsv = open('Points.csv', "x")
+        intersectcsv = open('Points.csv', "x"| "r")
         
         intersect = csv.DictReader(intersectcsv)
         iarray=[]
