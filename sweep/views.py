@@ -56,7 +56,8 @@ def handle_coordinates_sweep(request):
         # p.stdin.write(value)
         # p.stdin.flush()
         # result = p.stdout.readline().strip()
-        os.remove('Points.csv')
+        if(os.path.exists('Points.csv') and os.path.isfile('Points.csv')):
+         os.remove('Points.csv')
         intersectcsv = open('Points.csv', 'r')
         
         intersect = csv.DictReader(intersectcsv)
