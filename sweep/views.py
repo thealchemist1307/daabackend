@@ -33,7 +33,7 @@ def handle_coordinates_sweep(request):
         data, temp = os.pipe()
         os.write(temp, bytes(value, "utf-8"))
         os.close(temp) 
-        p = check_output("sweep.exe", shell=True, stdin=data)
+        p = check_output("./sweep.out", shell=True, stdin=data)
         
         #value = str(tutorial_data["input"]) + '\n'
         #value = bytes(value, 'UTF-8')  # Needed in Python 3.
