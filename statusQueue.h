@@ -366,6 +366,8 @@ class status{
     
     ///Function that returns both the neighbors of a node, given the point (taken in x_coor and y_coor)
     void getNeighbors(statusQueue* node, double x_coor, double y_coor, Line* lastRight, Line* lastLeft){
+        if(node == NULL)
+            return ;
         if(node->height == 1){
             if(lastRight->upper.x == -1){
                 if(sloper(node->segment, y_coor-0.1) <= x_coor)

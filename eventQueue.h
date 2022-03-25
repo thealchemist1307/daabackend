@@ -182,7 +182,7 @@ class event{
             return rightRotate(root);
         if (diff < -1 && (eventPoint.y > root->right->eventPoint.y || (eventPoint.y == root->right->eventPoint.y && eventPoint.x<root->right->eventPoint.x)))
             return leftRotate(root);
-        if (diff > 1 && (eventPoint.y > root->left->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->left->eventPoint.x))){
+        if (diff > 1 && (eventPoint.y > root->left->eventPoint.y || (eventPoint.y == root->left->eventPoint.y && eventPoint.x<root->left->eventPoint.x))){
             root->left = leftRotate(root->left);
             return rightRotate(root);
         }

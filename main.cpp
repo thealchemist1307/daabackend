@@ -25,7 +25,7 @@ int main(){
     //findIntersection.newStatus.preOrder(findIntersection.st_root);
     findIntersection.runAlgorithm();
     std::ofstream myFile;
-    myFile.open("Lines.csv", ios::out | ios::app);
+    myFile.open("Lines.csv");
     myFile <<"x1"<<","<<"y1"<<","<<"x2"<<","<<"y2"<<"\n";
     for(auto it = segments.begin(); it!=segments.end(); it++){
         Line l = (*it);
@@ -34,7 +34,7 @@ int main(){
     }
     myFile.close();
     std::ofstream myFile1;
-    myFile1.open("Points.csv", ios::out | ios::app);
+    myFile1.open("Points.csv");
     myFile1<<"x"<<","<<"y"<<"\n";
     //cout<<segments.size()<<endl;
     for(auto it = findIntersection.in_points.begin(); it!=findIntersection.in_points.end(); it++){
